@@ -1,6 +1,7 @@
 ### Classifying Political Blogs
 
 For an in-depth description of this project, [see here](https://www.idcrane.com/blog/2014/11/13/classifying-political-blogs/)
+
 This repo consists of a webapp (in 'webapp', oddly enough), as well as an IPython notebook that has code for training and playing around with different models. 
 
 TODO: have everything be able to find blogclassify.py and textscrape.py.
