@@ -1,4 +1,4 @@
-### Project Fletcher
+### Classifying Political Blogs
 
 Eventually there will be a blog post on this. 
 
