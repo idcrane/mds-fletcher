@@ -1,0 +1,23 @@
+name: fletcher_app_py27
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - beautifulsoup4
+  - flask
+  - ipython
+  - jupyter
+  - matplotlib
+  - nltk
+  - pandas=0.14
+  - pymongo
+  - python=2.7
+  - requests
+  - scikit-learn=0.15
+  - scipy
+  - wtforms
+  - pip:
+    - google-api-python-client
+    - goose-extractor
+    - feedparser
+    - Flask-WTF
