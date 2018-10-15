@@ -1,0 +1,23 @@
+name: fletcher_app
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - beautifulsoup4
+  - flask
+  - ipython
+  - jupyter
+  - matplotlib
+  - nltk
+  - pandas
+  - pymongo
+  - python=3.6
+  - requests
+  - scikit-learn
+  - scipy
+  - wtforms
+  - pip:
+    - google-api-python-client
+    - goose3
+    - feedparser
+    - Flask-WTF
