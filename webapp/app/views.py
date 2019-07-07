@@ -104,4 +104,3 @@ def index():
 
     return render_template('datauploadform.html',
                             form=form)
-

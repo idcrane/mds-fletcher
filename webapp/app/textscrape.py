@@ -1,4 +1,4 @@
-import goose
+import goose3
 import feedparser
 import apiclient
 from bs4 import BeautifulSoup
@@ -9,7 +9,7 @@ def get_articles_urls(urllist, verbose=True):
     if type(urllist) == str:
         urllist = [urllist]
 
-    g = goose.Goose()
+    g = goose3.Goose()
     for url in urllist:
         article = g.extract(url=url)
         text = text_clean(article.cleaned_text)
@@ -17,15 +17,15 @@ def get_articles_urls(urllist, verbose=True):
     cleaned_articles = [post for post in cleaned_articles if post]
 
     if verbose:
-        print "Number of urls to attempt: %i" % len(urllist)
-        print "Number of posts successfully scraped: %i" % len(cleaned_articles)
+        print("Number of urls to attempt: %i" % len(urllist))
+        print("Number of posts successfully scraped: %i" % len(cleaned_articles))
     return cleaned_articles
 
 def get_articles_rss(url, verbose=True):
     feeds = feedparser.parse(url)
     cleaned_articles = [text_clean(post['summary']) for post in feeds['entries']]
     if verbose:
-        print "Number of posts recovered: %i" % len(cleaned_articles)
+        print("Number of posts recovered: %i" % len(cleaned_articles))
     cleaned_articles = [post for post in cleaned_articles if post]
     return cleaned_articles
 
@@ -95,16 +95,21 @@ def sentence_count_filter(rawpostlist, num_sentences=5):
     """
     # Excepting stupid unicode errors for now, TODO
     postlist = []
-    rawpostlist = [unicode(post) for post in rawpostlist]
+
+    # unicode() doesn't exist in Python 3
+    # rawpostlist = [unicode(post) for post in rawpostlist]
+    rawpostlist = postlist
+
+
     for post in rawpostlist:
         sentence_length = 9999999
         try:
             sentence_length = len(sent_tokenize(post.encode('ascii', errors='ignore')))
         except UnicodeDecodeError:
-            print 'Unicode Error'
+            print('Unicode Error')
         if sentence_length > num_sentences:
             postlist.append(post)
-    print "Number of posts meeting criteria: %i" % len(postlist)
+    print("Number of posts meeting criteria: %i" % len(postlist))
     return postlist
 
 def url_clean(url):
